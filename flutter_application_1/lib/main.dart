@@ -25,33 +25,41 @@ class Home extends StatelessWidget
           centerTitle: true,
           backgroundColor: Colors.red,
           ),
-          body: Column
+          body: Row
           (
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Row(
-children: <Widget>[
-  Text("iya"),
-  Text("iya"),
-  Text("iya"),
-],
+            children: <Widget>
+            [
+              Expanded(child: Image.asset("assets/back.jpg"),
+              flex: 3,
               ),
-              Container(
-                padding: EdgeInsets.all(20),
-               color: Colors.cyan,
-                child: Text("one"),
+              Expanded
+              (
+                flex: 3,
+              child :Container
+              (
+                  padding:EdgeInsets.all(30.0),
+                  color: Colors.cyan,
+                  child: Text("1"),
               ),
-                Container(
-                padding: EdgeInsets.all(30),
-               color: Colors.red,
-                child: Text("one"),
               ),
-                Container(
-                padding: EdgeInsets.all(40),
-               color: Colors.lightBlue,
-                child: Text("one"),
-              ),
+                Expanded(
+                  flex: 2,
+                  child: Container
+                  (
+                   padding:EdgeInsets.all(30.0),
+                    color: Colors.redAccent,
+                    child: Text("1"),
+                  ),
+                ),
+                  Expanded(
+                    flex: 1,
+                    child: Container
+                                  (
+                                   padding:EdgeInsets.all(30.0),
+                    color: Colors.amberAccent,
+                    child: Text("1"),
+                                  ),
+                  ),
             ],
           ),
         floatingActionButton: FloatingActionButton
