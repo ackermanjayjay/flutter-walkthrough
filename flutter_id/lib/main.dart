@@ -22,6 +22,8 @@ int level=0;
   Widget build(BuildContext context) {
     return MaterialApp
     (
+        debugShowCheckedModeBanner: false,
+
       home:Scaffold
       (
         floatingActionButton: FloatingActionButton
