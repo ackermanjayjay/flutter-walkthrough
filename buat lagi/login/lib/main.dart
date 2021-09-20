@@ -1,10 +1,14 @@
 import 'dart:html';
+import 'dart:js';
 
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    Listku()
+    MaterialApp
+    (
+    home:Listku(),
+    ),
     );
 }
 
@@ -22,6 +26,7 @@ class _ListkuState extends State<Listku> {
         debugShowCheckedModeBanner: false,
       home:Scaffold
       (
+        
   appBar: AppBar
     (
       title: Text("Login Majo"),
@@ -65,8 +70,10 @@ class _ListkuState extends State<Listku> {
               child:  Positioned.fill(
               child: Icon(Icons.login),
               ),
-              backgroundColor: Colors.redAccent,
-              onPressed:(){},
+              backgroundColor: Colors.greenAccent,
+              onPressed:(){
+                Navigator.of(context).push(_createRoute());
+              },
               ),
           ],
           ),
@@ -74,4 +81,79 @@ class _ListkuState extends State<Listku> {
     ),
       );
   }
+}
+Route _createRoute()
+{
+  return PageRouteBuilder(
+    pageBuilder: (context,animation,secondaryAnimation)=>halaman2(),
+    transitionsBuilder: (context,animation,secondaryAnimation,child)
+    {
+      const begin=Offset(0, 1);
+      const end=Offset.zero;
+      const curve =Curves.ease;
+      var tween = Tween(
+        begin: begin,
+        end:end).chain
+        (
+          CurveTween(curve: curve));
+          return SlideTransition(
+            position: animation.drive(tween),
+            child: child,
+            );
+    }
+  );
+}
+class halaman2 extends StatefulWidget {
+ 
+
+  @override
+  _halaman2State createState() => _halaman2State();
+}
+
+class _halaman2State extends State<halaman2> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold
+      (
+        appBar: AppBar(),
+        body: Center
+        (
+          child: Text("login berhasil"),
+        ),
+        floatingActionButton: FloatingActionButton
+        (
+          child:Positioned.fill(
+            child: Icon(Icons.logout)
+            ) ,
+               backgroundColor: Colors.redAccent,
+          onPressed: ()
+        {
+          Navigator.of(context).push(_createRoute2());
+        },
+        ),
+      ),
+    );
+  }
+}
+Route _createRoute2()
+{
+  return PageRouteBuilder(
+    pageBuilder: (context,animation,secondaryAnimation)=>Listku(),
+    transitionsBuilder: (context,animation,secondaryAnimation,child)
+    {
+      const begin=Offset(0, 1);
+      const end=Offset.zero;
+      const curve =Curves.ease;
+      var tween = Tween(
+        begin: begin,
+        end:end).chain
+        (
+          CurveTween(curve: curve));
+          return SlideTransition(
+            position: animation.drive(tween),
+            child: child,
+            );
+    }
+  );
 }
